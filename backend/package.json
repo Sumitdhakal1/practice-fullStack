@@ -34,6 +34,7 @@
     "cookie": "^0.6.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "email-validator": "^2.0.4",
     "jsonwebtoken": "^9.0.2",
     "promisify": "^0.0.3"
   }

@@ -3,7 +3,7 @@
  import {NextFunction,} from 'express'
  import dotenv from 'dotenv';
   dotenv.config({path:'./config.env'});
-import AppError from './AppError';
+import AppError from './appError';
 export const createSendToken = (
     userid:any,
      ) =>{

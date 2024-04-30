@@ -1,6 +1,7 @@
 import express from "express";
 import cors from 'cors'
 import userRoute from './routes/userRoute'
+import  adminRoute from  './routes/adminRoute'
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -14,5 +15,6 @@ app.use(cors({
 
 
 app.use('/api',userRoute)
+app.use('/api', adminRoute)
 
 export default app

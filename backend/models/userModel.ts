@@ -1,35 +1,45 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 import { CallbackWithoutResultAndOptionalError } from "mongoose";
-
 export interface IUser{
     email:String,
     password:string,
-    name:string
+    userName:string,
+    fullName:String,
+    bio:String,
+    createdAt:String
 }
 
 const UserSchema =new mongoose.Schema<IUser>({
-name:{
+userName:{
     type:String,
   
 },
 email:{
     type:String,
-    required:[true,"please enter your email"]
+   
 },
 password:{
     type:String,
-    required:[true,'please enter your password'],
+   
     select:false
+},
+fullName:{
+    type:String,
+},bio:{
+ type:String,  
+},
+createdAt:{
+    type:Date,
+    default:Date.now()
 }
+
 })
 
 UserSchema.pre('save',async function(next: CallbackWithoutResultAndOptionalError){
     const user = this
     if(!user.isModified('password'))return(next);
     try{
-    //   const saltRounds =12
-    //   const salt =await bcrypt.genSalt(saltRounds)
       const hashedPassword = await bcrypt.hash(user.password, 12)
       user.password = hashedPassword
       next()
